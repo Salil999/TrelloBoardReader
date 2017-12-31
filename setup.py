@@ -6,8 +6,10 @@ setup(
     keywords=['trello', 'trello-board', 'scraper'],
     description='Small tool to help read from Trello boards',
 
+
     classifiers=[],
     packages=['trello_board_reader'],
+    install_requires=['requests'],
 
     author='Shashank Saxena',
     author_email='saxena.shashank96@gmail.com',
