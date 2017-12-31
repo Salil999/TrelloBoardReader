@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='trello_board_reader',
-    version='1.0',
+    version='1.1',
     keywords=['trello', 'trello-board', 'scraper'],
     description='Small tool to help read from Trello boards',
 
