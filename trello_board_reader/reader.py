@@ -18,6 +18,9 @@ class List:
     def get_cards(self):
         return self._cards
 
+    def get_id(self):
+        return self._id
+
     def __str__(self):
         return self._name
 
@@ -133,3 +136,10 @@ class TrelloBoardReader:
         if(not list_id or list_id not in self._lists):
             raise Exception('Parameter list_id is invalid')
         return self._list_ids[list_id]
+
+board = TrelloBoardReader('https://trello.com/b/HlANwEqw/tasks')
+all_lists = board.get_lists()
+print(all_lists)
+for item, val in board._list_ids.items():
+    print(item, '->', val)
+    print(type(item), '->', type(val))
