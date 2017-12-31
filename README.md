@@ -19,6 +19,8 @@ for card in first_list.get_cards():
     print(card.get_text())
 ```
 
+You can check out the [full documentation](https://github.com/Salil999/TrelloBoardReader/wiki/Documentation).
+
 ## Contributing
 Throw in a PR and let me know the changes!
 
