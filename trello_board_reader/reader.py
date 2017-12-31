@@ -30,10 +30,9 @@ class List:
 
 class Card:
 
-    def __init__(self, card_id=None, timestamp=None, board_id=None, list_id=None, name=None, url=None):
+    def __init__(self, card_id=None, timestamp=None, list_id=None, name=None, url=None):
         self._card_id = card_id
         self._timestamp = timestamp
-        self._board_id = board_id
         self._list_id = list_id
         self._name = name
         self._url = url
@@ -43,9 +42,6 @@ class Card:
 
     def get_timestamp(self):
         return self._timestamp
-
-    def get_board_id(self):
-        return self._board_id
 
     def get_list_id(self):
         return self._list_id
@@ -92,7 +88,6 @@ class TrelloBoardReader:
         self._handle_cards(data['cards'])
 
     def _handle_lists(self, lists):
-        self._lists = set()
         self._list_ids = dict()
 
         for item in lists:
@@ -100,7 +95,6 @@ class TrelloBoardReader:
                 continue
 
             list_obj = List(list_id=item['id'], name=item['name'])
-            self._lists.add(list_obj)
             self._list_ids[item['id']] = list_obj
 
     def _handle_cards(self, cards):
@@ -111,7 +105,6 @@ class TrelloBoardReader:
             ts = self._format_time(item['dateLastActivity'])
             card_obj = Card(card_id=item['id'],
                             timestamp=ts,
-                            board_id=item['idBoard'],
                             list_id=item['idList'],
                             name=item['name'],
                             url=item['url'])
@@ -130,16 +123,9 @@ class TrelloBoardReader:
         return self._board_id
 
     def get_lists(self):
-        return list(self._lists)
+        return list(self._list_ids.keys())
 
     def get_list_from_id(self, list_id):
-        if(not list_id or list_id not in self._lists):
+        if(not list_id or list_id not in self.get_lists()):
             raise Exception('Parameter list_id is invalid')
         return self._list_ids[list_id]
-
-board = TrelloBoardReader('https://trello.com/b/HlANwEqw/tasks')
-all_lists = board.get_lists()
-print(all_lists)
-for item, val in board._list_ids.items():
-    print(item, '->', val)
-    print(type(item), '->', type(val))

@@ -16,7 +16,7 @@ print(all_lists)
 
 first_list = board.get_list_from_id(all_lists[0])
 for card in first_list.get_cards():
-    print(card)
+    print(card.get_text())
 ```
 
 ## Contributing
