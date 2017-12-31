@@ -7,7 +7,6 @@ setup(
     description='Small tool to help read from Trello boards',
 
     classifiers=[],
-    include_package_data=True,
     packages=['trello_board_reader'],
 
     author='Shashank Saxena',

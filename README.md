@@ -8,13 +8,13 @@ You can install with pip:
 
 After installing, you can import and use the library. As an example...
 ```python
-from reader import TrelloBoardReader
+from trello_board_reader.reader import TrelloBoardReader
 
-reader = TrelloBoardReader('<Enter Trello Board URL here>')
-all_lists = reader.get_lists()
+board = TrelloBoardReader('<Enter Trello Board URL here>')
+all_lists = board.get_lists()
 print(all_lists)
 
-first_list = reader.get_list_from_id(all_lists[0])
+first_list = board.get_list_from_id(all_lists[0])
 for card in first_list.get_cards():
     print(card)
 ```
